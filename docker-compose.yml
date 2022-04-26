@@ -3,9 +3,9 @@ version: '3.7'
 services:
   playground-api:
     build:
-      context: ./
+      context: .
       dockerfile: src/Playground.API/Dockerfile
     restart: always
     ports:
-      - "7987:80"
+      - 7987:80
  

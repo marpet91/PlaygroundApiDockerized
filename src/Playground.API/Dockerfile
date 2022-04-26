@@ -4,12 +4,12 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["src/Playground.API/Playground.API.csproj", "Playground.API/"]
-COPY ["src/Playground.Core/Playground.Core.csproj", "Playground.Core/"]
+WORKDIR /app
+COPY ["src/Playground.API/Playground.API.csproj", "src/Playground.API/"]
+COPY ["src/Playground.Core/Playground.Core.csproj", "src/Playground.Core/"]
 RUN dotnet restore "src/Playground.API/Playground.API.csproj"
 COPY . .
-WORKDIR "/src/Playground.API"
+WORKDIR "/app/src/Playground.API"
 RUN dotnet build "Playground.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
